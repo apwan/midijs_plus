@@ -1,0 +1,28 @@
+{
+  "name": "midijs_plus",
+  "version": "0.1.0",
+  "description": "Augmented MIDI.js library",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apwan06/midijs_plus.git"
+  },
+  "keywords": [
+    "MIDI",
+    "js",
+    "web"
+  ],
+  "author": "Yijie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apwan06/midijs_plus/issues"
+  },
+  "homepage": "https://github.com/apwan06/midijs_plus#readme",
+  "devDependencies": {
+    "grunt": "1.0.1",
+    "grunt-contrib-uglify": "1.0.1"
+  }
+}
