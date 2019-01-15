@@ -4,11 +4,12 @@
   "description": "Augmented MIDI.js library",
   "main": "Gruntfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "grunt"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/apwan06/midijs_plus.git"
+    "url": "git+https://github.com/apwan/midijs_plus.git"
   },
   "keywords": [
     "MIDI",
@@ -18,11 +19,11 @@
   "author": "Yijie",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/apwan06/midijs_plus/issues"
+    "url": "https://github.com/apwan/midijs_plus/issues"
   },
-  "homepage": "https://github.com/apwan06/midijs_plus#readme",
+  "homepage": "https://github.com/apwan/midijs_plus#readme",
   "devDependencies": {
-    "grunt": "1.0.1",
-    "grunt-contrib-uglify": "1.0.1"
+    "grunt": "^1.0.3",
+    "grunt-contrib-uglify": "^1.0.1"
   }
 }

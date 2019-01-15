@@ -2,15 +2,15 @@
 module.exports = function(grunt){
     grunt.initConfig({
         uglify: {
-            build:{
+            dist:{
                 files: {
                     'build/midijs_plus.js': 'stream,midifile,replayer,audioDetect,gm,plugin,loader,player'.split(',').map(function(e){
-                        return e + '.js';
+                        return 'src/' + e + '.js';
                     })
                 }
             }
         }
     });
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.registerTask('default', ['uglify:build']);
+    grunt.registerTask('default', ['uglify:dist']);
 }
