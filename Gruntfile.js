@@ -1,12 +1,18 @@
 
 module.exports = function(grunt){
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
         uglify: {
             dist:{
                 files: {
-                    'build/midijs_plus.js': 'stream,midifile,replayer,audioDetect,gm,plugin,loader,player'.split(',').map(function(e){
-                        return 'src/' + e + '.js';
-                    })
+                    'build/midijs_plus-<%= pkg.version  %>.js': 
+                        'Base64,Base64binary,WebAudioAPI'.split(',').map(function(e){
+                                return 'shim/' + e + '.js';
+                        }).concat('stream,midifile,replayer,audioDetect,gm,plugin,loader,player'.split(',').map(function(e){
+                            return 'src/' + e + '.js';
+                        })
+
+                    )
                 }
             }
         }
