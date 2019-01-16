@@ -24,6 +24,7 @@
   "homepage": "https://github.com/apwan/midijs_plus#readme",
   "devDependencies": {
     "grunt": "^1.0.3",
+    "grunt-contrib-coffee": "^1.0.0",
     "grunt-contrib-uglify": "^1.0.1"
   }
 }
