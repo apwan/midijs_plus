@@ -8,7 +8,7 @@ module.exports = function(grunt){
                     'build/midijs_plus-<%= pkg.version  %>.js': 
                         'Base64,Base64binary,WebAudioAPI'.split(',').map(function(e){
                                 return 'shim/' + e + '.js';
-                        }).concat('stream,midifile,replayer,audioDetect,gm,plugin,loader,player'.split(',').map(function(e){
+                        }).concat('stream,midifile,midiwriter,replayer,audioDetect,gm,plugin,loader,player'.split(',').map(function(e){
                             return 'src/' + e + '.js';
                         })
 

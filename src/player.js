@@ -130,7 +130,10 @@ midi.loadFile = function(file, onsuccess, onprogress, onerror) {
 		var data = window.atob(file.split(',')[1]);
 		midi.currentData = data;
 		midi.loadMidiFile(onsuccess, onprogress, onerror);
-	} else {
+	} else if(file.indexOf('raw,') !== -1){
+		midi.currentData = file.substr(4);
+		midi.loadMidiFile(onsuccess, onprogress, onerror);
+	}else{
 		var fetch = new XMLHttpRequest();
 		fetch.open('GET', file);
 		fetch.overrideMimeType('text/plain; charset=x-user-defined');
@@ -302,7 +305,7 @@ var startAudio = function(currentTime, fromCache, onsuccess) {
 
 
         // fix: change <= to <
-		if ((queuedTime += obj[1]) <= currentTime ) {
+		if ((queuedTime += obj[1]) < currentTime ) {
 			offset = queuedTime;
 			//console.log('skip',queuedTime, currentTime, obj[0].event);
 			continue;
@@ -396,7 +399,7 @@ var stopAudio = function() {
 })();
 
 
-var TEST = TEST || {};
+
 MIDI.setMidi = function(m, autostart){
 	var f = typeof m=='object'? MidiWriter(m): m;
 	MIDI.Player.loadFile('base64,'+btoa(f),function(){
@@ -406,20 +409,4 @@ MIDI.setMidi = function(m, autostart){
 		}
 	});
 	
-}
-
-TEST.testMidiPlayer = function (){
-	var m = new simpMidi();
-	for(var i=0;i<10;++i){
-		m.addEvent(0,'noteOn', 0, [60+i*2, 100]);
-	    m.addEvent(500,'noteOff', 0, [60+i*2, 0]);
-
-	}
-	m.finish();
-	MIDI.Player.loadFile('./mid/test.mid', function(){
-		TEST.testMidi(MIDI.Player.currentData);
-		//MIDI.Player.start();
-		MIDI.setMidi(m,true);
-	});
-	return TEST.testMidi(m);
 }

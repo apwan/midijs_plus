@@ -123,49 +123,6 @@ function Stream(str) {
 	}
 }
 
-// test case
-var TEST = TEST || {};
-TEST.testStream = function (){
-	
-	var r = Stream('abcdefghijklmn12');
-	var w = Stream();
-	while(!r.eof()){
-		w.writeInt32(r.readInt32());
-	}
-	if(r.readAll() == w.readAll()){
-		console.log('PASS: writeInt32');
-	}else{
-		console.log('Fail: writeInt32', w.readAll());
-		return false;
-	}
-
-	r.reset();
-	w = Stream();
-	while(!r.eof()){
-		w.writeInt16(r.readInt16());
-	}
-	if(r.readAll() == w.readAll()){
-		console.log('PASS: writeInt16');
-	}else{
-		console.log('Fail: writeInt16', w.readAll());
-		return false;
-	}
-
-	w = Stream();
-	w.writeVarInt(0x8FFF);
-	w.writeInt8(0x1F);
-	w.writeVarInt(0x76FF32);
-	r = Stream(w.readAll());
-	if(r.readVarInt() == 0x8FFF  && r.readInt8(true) == 0x1F && r.readVarInt() == 0x76FF32){
-		console.log('PASS: writeVarInt');
-	}else{
-		console.log('Fail: writeVarInt', w.readAll(), r.readAll());
-		return false;
-	}
-
-	return true;
-}
-
 if(typeof module!='undefined'){
 	module.exports.Stream = Stream;
 }
